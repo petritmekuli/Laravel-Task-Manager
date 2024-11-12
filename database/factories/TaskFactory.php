@@ -18,7 +18,7 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
+            'user_id' => 1, // They all belong to the first user for now.
             'title' => fake()->sentence(5),
             'description' => fake()->paragraph(5),
             'status' => fake()->boolean(),
