@@ -11,13 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /*
+        * $table->integer('priority')->nullable();
+        * Making priority nullable will create a new tasks category while
+        * filtering. Since filtering tasks that don't have any priority
+        * didn't make much sense to be in their own category neither could
+        * them be included with other categories. So I decided if not explicitly
+        * set tasks will have low priority.
+        */
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->string('title');
             $table->text('description');
             $table->boolean('status')->default(false);
-            $table->integer('priority')->nullable();
+            $table->boolean('priority')->default(1);
             $table->timestamps();
         });
     }
